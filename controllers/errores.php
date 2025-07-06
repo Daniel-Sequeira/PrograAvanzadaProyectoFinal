@@ -1,5 +1,5 @@
 <?php
-class AppError extends Controller {
+class Errores extends Controller {
     
     function __construct(){
         parent::__construct();

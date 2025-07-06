@@ -2,24 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Landing Page</title>
-    <style>
-        body {
-            display: flex;
-            height: 100vh;
-            margin: 0;
-            justify-content: center;
-            align-items: center;
-            background: #f5f5f5;
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            color: #333;
-            font-size: 3rem;
-        }
-    </style>
+    <title>Zapatería SM</title>
 </head>
 <body>
-    <h1>Hola</h1>
+    <?php require (__DIR__ . '/../../layout/header.php') ?>
+
+    <?php require (__DIR__ . '/../../layout/footer.php')?>
 </body>
 </html>
