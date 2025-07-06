@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Zapatería SM</title>
-    <link href="/PrograAvanzadaProyectoFinal/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/PrograAvanzadaProyectoFinal/css/dashboard.css" rel="stylesheet">
+    <link href="<?php echo constant('URL'); ?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo constant('URL'); ?>css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,17 +16,4 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../logout.php">Salir</a>
-            </div>
-        </div>
     </header>
-
-    <div class="container-fluid">
-        <div class="row">
-            <?php
-            //require 'sidebar.php';
-            ?>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

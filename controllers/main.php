@@ -9,9 +9,6 @@ class Main extends Controller {
         
     }
 
-    function saludo(){
-        echo "<p>Metodo saludo</p>";
-    }
-
+   
 }
 ?>

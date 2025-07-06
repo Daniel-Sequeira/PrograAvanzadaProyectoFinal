@@ -8,5 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
   <script src="/PrograAvanzadaProyectoFinal/js/dashboard.js"></script>
 </body>
-
+<footer class="text-center mt-4 mb-2">
+  <strong>Somos tu mejor opción</strong>
+</footer>
 </html>
