@@ -1,8 +1,9 @@
 <?php 
+//Enrutamiento del sistema, requiere controlador de errores en caso que no se encuentre el controlador solicitado.
 require_once 'controllers/errores.php';
 class App{
     function __construct(){
-       
+       //Constructor obtiene la url, elimina la barra al final (/) y la divide en un array. ['main', 'index']
         $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
         $url = explode('/', $url);
@@ -19,13 +20,15 @@ class App{
         $archivoController = 'controllers/'. $url[0] . '.php';
 
         if(file_exists($archivoController)){
-            // Si el archivo existe, lo incluimos
+            // Si el archivo existe, lo incluimos y crea instancia del controlador.
             require_once $archivoController;
             $controller = new $url[0];
+            // Si existe un segundo segmento, lo cargamos, que seria la vista o metodo del controlador.
             if(isset($url[1])){
                 $controller->{$url[1]}();
             }
         }else{
+            // Si no existe el controlador, cargamos el controlador de errores.
             $controller = new Errores();
         }
 
