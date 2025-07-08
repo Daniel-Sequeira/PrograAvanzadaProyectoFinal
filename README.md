@@ -51,4 +51,3 @@ class App {
     }
 }
 
-🧭 Controlador Base
