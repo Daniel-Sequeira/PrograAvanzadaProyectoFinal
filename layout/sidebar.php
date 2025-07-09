@@ -4,13 +4,13 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link <?= basename($_SERVER['PHP_SELF'])=="index.php"?'active':''?>" aria-current="page" href="producto">
-                    <span data-feather="bar-chart" class="align-text-bottom"></span>
-                    Consultar Productos
+                    <span data-feather="log-out" class="align-text-bottom"></span>
+                    Salir
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?= basename($_SERVER['PHP_SELF'])=="index.php"?'active':''?>" href="factura">
-                    <span data-feather="book-open" class="align-text-bottom"></span>
+                    <span data-feather="book" class="align-text-bottom"></span>
                    Facturas
                 </a>
             </li>
