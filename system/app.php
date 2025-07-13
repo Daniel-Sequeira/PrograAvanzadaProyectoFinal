@@ -13,6 +13,7 @@ class App{
              $archivoController = 'controllers/main.php';
               require_once $archivoController;
               $controller = new Main();
+              $controller->loadModel('main'); // Carga el modelo correspondiente al controlador.
               return false;
         }
            
@@ -23,6 +24,7 @@ class App{
             // Si el archivo existe, lo incluimos y crea instancia del controlador.
             require_once $archivoController;
             $controller = new $url[0];
+            $controller->loadModel($url[0]); // Carga el modelo correspondiente al controlador.
             // Si existe un segundo segmento, lo cargamos, que seria la vista o metodo del controlador.
             if(isset($url[1])){
                 $controller->{$url[1]}();
