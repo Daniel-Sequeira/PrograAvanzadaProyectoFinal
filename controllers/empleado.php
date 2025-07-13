@@ -16,10 +16,12 @@ class Empleado extends Controller {
        $estado = $_POST['estado'];
        $id_rol = $_POST['id_rol'];
        
-        $this->model->insert(['nombre' => $nombre, 'correo' => $correo, 
+        if($this->model->insert(['nombre' => $nombre, 'correo' => $correo, 
         'telefono' => $telefono, 'cedula' => $cedula, 
         'contrasena' => $conntrasena, 'estado' => $estado, 
-        'id_rol' => $id_rol]);
+        'id_rol' => $id_rol])){
+            echo "Empleado registrado correctamente";
+        } 
     }
 }
 

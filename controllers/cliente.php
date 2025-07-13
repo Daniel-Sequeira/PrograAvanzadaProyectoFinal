@@ -12,8 +12,10 @@ class Cliente extends Controller {
        $correo = $_POST['correo']; 
        $cedula = $_POST['cedula'];
        
-        $this->model->insert(['nombre' => $nombre, 'correo' => $correo, 
-        'cedula' => $cedula]);
+       if($this->model->insert(['nombre' => $nombre, 'correo' => $correo, 
+        'cedula' => $cedula])){
+            echo "Cliente registrado correctamente";
+        }   
     }
 }
 

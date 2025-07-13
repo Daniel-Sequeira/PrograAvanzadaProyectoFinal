@@ -7,7 +7,8 @@ class EmpleadoModel extends Model {
 
     //Acciones CRUD para el modelo Empleado
      public function insert($datos){
-       $query = $this->db->connect()->prepare('INSERT INTO empleado (nombre, correo, telefono, cedula, contrasena, estado, id_rol) 
+        try {
+             $query = $this->db->connect()->prepare('INSERT INTO empleado (nombre, correo, telefono, cedula, contrasena, estado, id_rol) 
        VALUES (:nombre, :correo, :telefono, :cedula, :contrasena, :estado, :id_rol)');
        $query->execute([
            'nombre' => $datos['nombre'],
@@ -17,7 +18,14 @@ class EmpleadoModel extends Model {
            'contrasena' => password_hash($datos['contrasena'], PASSWORD_DEFAULT),
            'estado' => $datos['estado'],
            'id_rol' => $datos['id_rol']
+           return true;
        ]);
+
+        }catch(PDOException $e){
+            echo e->getMessage();
+            return false;
+        }
+          
          
      }
 }

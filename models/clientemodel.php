@@ -7,13 +7,21 @@ class ClienteModel extends Model {
 
     //Acciones CRUD para el modelo Cliente
      public function insert($datos){
-       $query = $this->db->connect()->prepare('INSERT INTO cliente (nombre, correo,cedula) 
+        try{
+             $query = $this->db->connect()->prepare('INSERT INTO cliente (nombre, correo,cedula) 
        VALUES (:nombre, :correo,:cedula)');
        $query->execute([
            'nombre' => $datos['nombre'],
            'correo' => $datos['correo'],
            'cedula' => $datos['cedula']
+              return true;
        ]);
+
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+      
          
      }
 }
