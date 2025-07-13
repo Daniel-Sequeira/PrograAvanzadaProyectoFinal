@@ -18,7 +18,7 @@ class EmpleadoModel extends Model {
            'estado' => $datos['estado'],
            'id_rol' => $datos['id_rol']
        ]);
-         echo "Insertar Model empleado";
+         
      }
 }
 ?>

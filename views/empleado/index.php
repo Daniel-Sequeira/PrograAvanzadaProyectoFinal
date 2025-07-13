@@ -24,11 +24,11 @@
                 <label for="telefono">Teléfono:</label><br>
                 <input type="text" name="telefono" id="">
             </p>
-             <p>
+            <p>
                 <label for="cedula">Cédula:</label><br>
                 <input type="text" name="cedula" id="">
             </p>
-             <p>
+            <p>
                 <label for="contrasena">Contraseña:</label><br>
                 <input type="text" name="contrasena" id="">
             </p>
@@ -41,9 +41,9 @@
                 <input type="text" name="id_rol" id="">
             </p>
             <p>
-            <input type="submit" value="Registrar">
+                <input type="submit" value="Registrar">
             </p>
-            
+
 
         </form>
     </div>
