@@ -17,7 +17,14 @@ class Controller{
             $modelName = $model . 'Model';
             $this->model = new $modelName();
         }
-    }   
+    } 
+    
+     // Método index universal y dinámico
+    public function index() {
+        $clase = get_class($this); // Ej: 'Empleado'
+        $vistaCarpeta = strtolower($clase); // pasa a ser 'empleado'
+        $this->view->render($vistaCarpeta . '/index'); // Renderiza la vista de forma dinamica segun cada carpeta.
+    }
 
    
 }

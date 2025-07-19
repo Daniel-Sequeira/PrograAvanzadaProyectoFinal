@@ -28,11 +28,15 @@ class App{
             // Si existe un segundo segmento, lo cargamos, que seria la vista o metodo del controlador.
             if(isset($url[1])){
                 $controller->{$url[1]}();
-            }
+            }else{
+            // Si no existe el metodo, cargamos el controlador index por defecto
+            $controller->index();
+        }
         }else{
             // Si no existe el controlador, cargamos el controlador de errores.
             $controller = new Errores();
-        }
+            
+        }   
 
     }   
 }  
