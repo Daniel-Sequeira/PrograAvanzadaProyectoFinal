@@ -14,7 +14,8 @@ class App{
               require_once $archivoController;
               $controller = new Main();
               $controller->loadModel('main'); // Carga el modelo correspondiente al controlador.
-              return false;
+              $controller->index(); // Llama al método index del controlador.
+              return;
         }
            
         
