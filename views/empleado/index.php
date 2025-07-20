@@ -90,6 +90,10 @@
                 </div>
                 <form action="<?php echo constant('URL');?>empleado/registrarEmpleado" method="POST">
                     <div class="modal-body">
+                       <div class="form-group">
+                            <label for="cedula">Cédula</label>
+                            <input type="text" id= "cedula" name="cedula" class="form-control" required>
+                        </div>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" id= "nombre" name="nombre" class="form-control" required>
@@ -102,10 +106,7 @@
                             <label for="telefono">Teléfono</label>
                             <input type="text" id= "telefono" name="telefono" class="form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label for="cedula">Cédula</label>
-                            <input type="text" id= "cedula" name="cedula" class="form-control" required>
-                        </div>
+                       
                         <div class="form-group">
                             <label for="contrasena">Contraseña</label>
                             <input type="password" id= "contrasena" name="contrasena" class="form-control" required>
@@ -119,7 +120,7 @@
                         </div>
                         <div class="form-group">
                             <label for="id_rol">Rol</label>
-                            <input type="text" name="id_rol" class="form-control" required>
+                            <input type="text" id="id_rol" name="id_rol" class="form-control" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -143,6 +144,10 @@
         </div>
         <div class="modal-body">
           <input type="hidden" name="id_empleado" id="edit_id_empleado">
+           <div class="form-group">
+            <label>Cédula</label>
+            <input type="text" name="cedula" id="edit_cedula" class="form-control" required>
+          </div>
           <div class="form-group">
             <label>Nombre</label>
             <input type="text" name="nombre" id="edit_nombre" class="form-control" required>
@@ -154,10 +159,6 @@
           <div class="form-group">
             <label>Teléfono</label>
             <input type="text" name="telefono" id="edit_telefono" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Cédula</label>
-            <input type="text" name="cedula" id="edit_cedula" class="form-control" required>
           </div>
           <div class="form-group">
             <label>Estado</label>
@@ -189,12 +190,39 @@
 
 
     <!-- Bootstrap JS + jQuery (requeridos por modal) -->
-<script src="<?= constant('URL'); ?>js/jquery-3.5.1.min.js"></script>
-<script src="<?= constant('URL'); ?>js/bootstrap.bundle.min.js"></script>
-<script src="<?= constant('URL'); ?>js/modaledith.js"></script>
-
-
-</html>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script>
+$(function() {
+    // Cuando el campo de cédula pierde el foco, consultamos la API
+    $('#cedula').on('blur', function() {
+        var cedula = $(this).val().trim();
+        // Valida: 9 dígitos
+        if(/^[0-9]{9}$/.test(cedula)) {
+            fetch(`https://api.hacienda.go.cr/fe/ae?identificacion=${cedula}`)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.nombre && data.nombre.length > 0) {
+                        var $nombre = $('#nombre');
+                        if($nombre.val() !== '' && $nombre.val() !== data.nombre) {
+                            if(confirm(`La cédula ${cedula} corresponde a "${data.nombre}". ¿Desea actualizar el nombre?`)) {
+                                $nombre.val(data.nombre);
+                            }
+                        } else if($nombre.val() === '') {
+                            $nombre.val(data.nombre);
+                        }
+                    } else {
+                        alert('No se encontró información para la cédula proporcionada.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Hubo un error al consultar la cédula.');
+                });
+        }
+    });
+});
+</script>
 
 </body>
 
