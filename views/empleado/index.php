@@ -74,6 +74,11 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <div class="d-flex justify-content-end mt-3">
+            <a href="<?= constant('URL'); ?>dashboard" class="btn btn-secondary">
+                Regresar
+            </a>
+        </div>
     </div>
 
 
@@ -90,30 +95,30 @@
                 </div>
                 <form action="<?php echo constant('URL');?>empleado/registrarEmpleado" method="POST">
                     <div class="modal-body">
-                       <div class="form-group">
+                        <div class="form-group">
                             <label for="cedula">Cédula</label>
-                            <input type="text" id= "cedula" name="cedula" class="form-control" required>
+                            <input type="text" id="cedula" name="cedula" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" id= "nombre" name="nombre" class="form-control" required>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo</label>
-                            <input type="email" id= "correo" name="correo" class="form-control" required>
+                            <input type="email" id="correo" name="correo" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono</label>
-                            <input type="text" id= "telefono" name="telefono" class="form-control" required>
+                            <input type="text" id="telefono" name="telefono" class="form-control" required>
                         </div>
-                       
+
                         <div class="form-group">
                             <label for="contrasena">Contraseña</label>
-                            <input type="password" id= "contrasena" name="contrasena" class="form-control" required>
+                            <input type="password" id="contrasena" name="contrasena" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="estado">Estado</label>
-                            <select id= "estado" name="estado" class="form-control" required>
+                            <select id="estado" name="estado" class="form-control" required>
                                 <option value="1">Habilitado</option>
                                 <option value="0">Deshabilitado</option>
                             </select>
@@ -131,98 +136,103 @@
             </div>
         </div>
     </div>
-<!--Modal de Edición de Empleado -->
-    <div class="modal fade" id="modalEditarEmpleado" tabindex="-1" role="dialog" aria-labelledby="modalEditarEmpleadoLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <form action="<?= constant('URL'); ?>empleado/actualizarEmpleado" method="POST" id="formEditarEmpleado">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalEditarEmpleadoLabel">Editar Empleado</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <!--Modal de Edición de Empleado -->
+    <div class="modal fade" id="modalEditarEmpleado" tabindex="-1" role="dialog"
+        aria-labelledby="modalEditarEmpleadoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="<?= constant('URL'); ?>empleado/actualizarEmpleado" method="POST" id="formEditarEmpleado">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarEmpleadoLabel">Editar Empleado</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id_empleado" id="edit_id_empleado">
+                        <div class="form-group">
+                            <label>Cédula</label>
+                            <input type="text" name="cedula" id="edit_cedula" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" name="nombre" id="edit_nombre" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Correo</label>
+                            <input type="email" name="correo" id="edit_correo" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="text" name="telefono" id="edit_telefono" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <select name="estado" id="edit_estado" class="form-control" required>
+                                <option value="1">Habilitado</option>
+                                <option value="0">Deshabilitado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Rol</label>
+                            <input type="text" name="id_rol" id="edit_id_rol" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="check_cambiar_contrasena">
+                                Cambiar contraseña
+                            </label>
+                            <input type="password" class="form-control" name="contrasena" id="edit_contrasena" disabled
+                                placeholder="Nueva contraseña">
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="modal-body">
-          <input type="hidden" name="id_empleado" id="edit_id_empleado">
-           <div class="form-group">
-            <label>Cédula</label>
-            <input type="text" name="cedula" id="edit_cedula" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" name="nombre" id="edit_nombre" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Correo</label>
-            <input type="email" name="correo" id="edit_correo" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Teléfono</label>
-            <input type="text" name="telefono" id="edit_telefono" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>Estado</label>
-            <select name="estado" id="edit_estado" class="form-control" required>
-              <option value="1">Habilitado</option>
-              <option value="0">Deshabilitado</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Rol</label>
-            <input type="text" name="id_rol" id="edit_id_rol" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label>
-              <input type="checkbox" id="check_cambiar_contrasena">
-              Cambiar contraseña
-            </label>
-            <input type="password" class="form-control" name="contrasena" id="edit_contrasena" disabled placeholder="Nueva contraseña">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+    </div>
 
 
     <!-- Bootstrap JS + jQuery (requeridos por modal) -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-<script>
-$(function() {
-    // Cuando el campo de cédula pierde el foco, consultamos la API
-    $('#cedula').on('blur', function() {
-        var cedula = $(this).val().trim();
-        // Valida: 9 dígitos
-        if(/^[0-9]{9}$/.test(cedula)) {
-            fetch(`https://api.hacienda.go.cr/fe/ae?identificacion=${cedula}`)
-                .then(response => response.json())
-                .then(data => {
-                    if(data.nombre && data.nombre.length > 0) {
-                        var $nombre = $('#nombre');
-                        if($nombre.val() !== '' && $nombre.val() !== data.nombre) {
-                            if(confirm(`La cédula ${cedula} corresponde a "${data.nombre}". ¿Desea actualizar el nombre?`)) {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+    $(function() {
+        // Cuando el campo de cédula pierde el foco, consultamos la API
+        $('#cedula').on('blur', function() {
+            var cedula = $(this).val().trim();
+            // Valida: 9 dígitos
+            if (/^[0-9]{9}$/.test(cedula)) {
+                fetch(`https://api.hacienda.go.cr/fe/ae?identificacion=${cedula}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.nombre && data.nombre.length > 0) {
+                            var $nombre = $('#nombre');
+                            if ($nombre.val() !== '' && $nombre.val() !== data.nombre) {
+                                if (confirm(
+                                        `La cédula ${cedula} corresponde a "${data.nombre}". ¿Desea actualizar el nombre?`
+                                        )) {
+                                    $nombre.val(data.nombre);
+                                }
+                            } else if ($nombre.val() === '') {
                                 $nombre.val(data.nombre);
                             }
-                        } else if($nombre.val() === '') {
-                            $nombre.val(data.nombre);
+                        } else {
+                            alert('No se encontró información para la cédula proporcionada.');
                         }
-                    } else {
-                        alert('No se encontró información para la cédula proporcionada.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un error al consultar la cédula.');
-                });
-        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Hubo un error al consultar la cédula.');
+                    });
+            }
+        });
     });
-});
-</script>
+    </script>
 
 </body>
 
