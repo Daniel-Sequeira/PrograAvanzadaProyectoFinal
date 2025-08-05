@@ -49,6 +49,11 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <div class="d-flex justify-content-end mt-3">
+            <a href="<?= constant('URL'); ?>dashboard" class="btn btn-secondary">
+                Regresar
+            </a>
+        </div>
     </div>
 
     <!-- Modal de Registro de Cliente -->
