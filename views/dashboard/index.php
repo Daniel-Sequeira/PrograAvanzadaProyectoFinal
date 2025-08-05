@@ -4,14 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Zapatería SM</title>
+    <!-- Asegúrate de incluir Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <?php require __DIR__ . '/../../layout/header.php'; ?>
+    
     <div class="container-fluid">
         <div class="row">
-            <?php require  __DIR__ . '/../../layout/sidebar.php'?>
-            
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <?php require  __DIR__ . '/../../layout/sidebar.php'?>
+            </nav>
+            <!-- Main content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <h1 class="h2">Dashboard</h1>
                 <div class="container">
@@ -24,44 +30,15 @@
                             </form>
                         </div>
                     </div>
-
-                    <!--Tabla de productos -->
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Marca</th>
-                                    <th>Descripción</th>
-                                    <th>Talla</th>
-                                    <th>Precio</th>
-                                    <th>Cantidad</th>
-                                    <th>Impuesto</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabla-productos">
-                                <!-- Ejemplo de fila -->
-                                <tr>
-                                    <td>001</td>
-                                    <td>Nike</td>
-                                    <td>Zapatillas deportivas</td>
-                                    <td>42</td>
-                                    <td>$75.00</td>
-                                    <td>10</td>
-                                    <td>13%</td>
-                                    <td><button class="btn btn-success btn-sm">Agregar al carrito</button></td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
                 <script src="/js/search.js"></script>
             </main>
         </div>
+    </div>
 
-        <?php require  __DIR__ . '/../../layout/footer.php'?>
+    <?php require  __DIR__ . '/../../layout/footer.php'?>
+    <!-- Bootstrap JS (opcional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
