@@ -4,64 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Zapatería SM</title>
+    <link href="<?php echo constant('URL'); ?>css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <?php require __DIR__ . '/../../layout/header.php'; ?>
     <div class="container-fluid">
         <div class="row">
-            <?php require  __DIR__ . '/../../layout/sidebar.php'?>
-            
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <h1 class="h2">Dashboard</h1>
-                <div class="container">
-                    <!-- Buscador -->
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <form class="d-flex" onsubmit="buscarProducto(); return false;">
-                                <input class="form-control me-2" type="search" placeholder="Buscar producto..." id="busqueda">
-                                <button class="btn btn-primary" type="submit">Buscar</button>
-                            </form>
-                        </div>
+            <div class="col-md-3 col-12 mb-3">
+                <?php require  __DIR__ . '/../../layout/sidebar.php'?>
+            </div>
+            <div class="col-md-9 col-12">
+                <!-- Buscador por marca -->
+                <form method="GET" action="">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="marca" placeholder="Buscar por marca"
+                            value="<?php echo isset($_GET['marca']) ? htmlspecialchars($_GET['marca']) : ''; ?>">
+                        <button class="btn btn-primary" type="submit">Buscar</button>
                     </div>
-
-                    <!--Tabla de productos -->
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Marca</th>
-                                    <th>Descripción</th>
-                                    <th>Talla</th>
-                                    <th>Precio</th>
-                                    <th>Cantidad</th>
-                                    <th>Impuesto</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabla-productos">
-                                <!-- Ejemplo de fila -->
-                                <tr>
-                                    <td>001</td>
-                                    <td>Nike</td>
-                                    <td>Zapatillas deportivas</td>
-                                    <td>42</td>
-                                    <td>$75.00</td>
-                                    <td>10</td>
-                                    <td>13%</td>
-                                    <td><button class="btn btn-success btn-sm">Agregar al carrito</button></td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <script src="/js/search.js"></script>
-            </main>
+                </form>
+                <?php
+                // Ejemplo de filtrado (ajusta según tu lógica y datos)
+                if (isset($_GET['marca']) && $_GET['marca'] !== '') {
+                    $marca = $_GET['marca'];
+                    // Aquí iría la consulta a la base de datos para filtrar por marca
+                    echo "<p>Resultados para la marca: <strong>" . htmlspecialchars($marca) . "</strong></p>";
+                    // Mostrar resultados...
+                }
+                ?>
+            </div>
         </div>
+    </div>
 
+    <div>
         <?php require  __DIR__ . '/../../layout/footer.php'?>
+    </div>
 </body>
+
 
 </html>
