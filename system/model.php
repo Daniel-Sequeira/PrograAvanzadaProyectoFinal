@@ -2,18 +2,21 @@
 include_once 'system/imodel.php';
 class Model{
     protected $db;
+    // Constructor que inicializa la conexión a la base de datos
     function __construct(){
         $this->db = new Database();
     }
-}
-// Método para ejecutar consultas SQL
+
+    // Método para ejecutar consultas SQL
 function query($query){
-    return $this->db->connect()->query(query);
+    return $this->db->connect()->query($query);
 }
 
 function prepare($query){
-    return $this->db->connect()->prepare(query);
+    return $this->db->connect()->prepare($query);
 }
 
 
+
+}
 ?>

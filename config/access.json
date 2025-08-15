@@ -31,7 +31,7 @@
         },
         {
             "site": "producto",
-            "access": "private",
+            "access": "public",
             "rol": "1"
             
         },

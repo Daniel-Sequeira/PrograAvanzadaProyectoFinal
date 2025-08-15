@@ -1,5 +1,6 @@
 <?php
 require_once 'class/session.php';
+require_once 'models/empleadomodel.php';
 class SessionController extends Controller {
 
     private $userSession;
@@ -35,7 +36,12 @@ class SessionController extends Controller {
 
     private function validateSession(){
         if($this->existSession()){
-            $rol = $this->getUserSessionData()->getRol();
+            $userSessionData = $this->getUserSessionData();
+           if ($userSessionData && method_exists($userSessionData, 'getIdRol')) {
+            $rol = $userSessionData->getIdRol();
+        } else {
+            $rol = null;
+        }
             // comprobar si página es pública
             if($this->isPublic()){
                 $this->redirectToDefaultSiteByRol($rol);
@@ -53,7 +59,8 @@ class SessionController extends Controller {
                 // La página es pública, permitir acceso
             } else {
                 // La página no es pública, redirigir a login
-                header('Location: ' . constant('URL') . '');
+                header('Location: ' . constant('URL') . 'login');
+                exit;
             }
         }
     }
@@ -73,8 +80,8 @@ class SessionController extends Controller {
     }
 
     function getUserSessionData(){
-        $id = $this->userid;
-        $this->user = new UserModel();
+        $id = $this->session->getCurrentUser();
+        $this->user = new EmpleadoModel();
         $this->user->get($id);
         return $this->user;
     }
@@ -100,11 +107,12 @@ class SessionController extends Controller {
         $url = '';
         for($i = 0; $i < sizeof($this->sites); $i++){
             if($this->sites[$i]['rol'] ==$rol){
-                $url = '/controllers/' . $this->sites[$i]['site'];
+                $url = constant('URL') . $this->sites[$i]['site'];
                 break;
             }   
         }
-        header('Location: ' . $url);
+        
+        exit;
     }
 
     private function isAutorized($rol){
@@ -122,8 +130,8 @@ class SessionController extends Controller {
 
     //Metodos para login y logout
     function initialize($user)  {
-        $this->session->setCurrentUser($user->getId());
-        $this->autorizeAccess($user->getRol());
+        $this->session->setCurrentUser($user->getIdEmpleado());
+        $this->autorizeAccess($user->getIdRol());
     }
 
 

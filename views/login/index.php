@@ -15,15 +15,15 @@
 <body class="text-center">
 
     <main class="form-signin w-100 m-auto">
-        <form action="" method="post">
+        <form action="<?php echo constant('URL'); ?>login/authenticate" method="post">
             <img class="mb-4" src="<?php echo constant('URL');?>img/LogoZapateria.png" alt="Logo Zapatería" width="85"
                 height="70">
             <h1 class="h3 mb-3 fw-normal">Inicio de Sesion</h1>
 
             <div class="form-floating">
-                <input name="usuario" type="text" class="form-control" id="floatingInput"
+                <input name="cedula" type="text" class="form-control" id="floatingInput"
                     placeholder="1-1234-5678 | name@example.com">
-                <label for="floatingInput">Cedula o Correo Electronico</label>
+                <label for="floatingInput">Cedula </label>
             </div>
             <div class="form-floating">
                 <input name="contrasena" type="password" class="form-control" id="floatingPassword"

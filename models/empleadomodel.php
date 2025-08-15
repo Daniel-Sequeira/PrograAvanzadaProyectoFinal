@@ -76,6 +76,7 @@ class EmpleadoModel extends Model implements IModel {
 
 
     public function get($id_empleado){
+         $items = [];
         try{
            $query = $this->prepare('SELECT * FROM empleado WHERE id_empleado = :id_empleado');
            $query->execute(['id_empleado' => $id_empleado]);
