@@ -14,8 +14,8 @@
         },
         {
             "site": "dashboard",
-            "access": "private",
-            "rol": "user"
+            "access": "public",
+            "rol": ""
             
         },
         {
@@ -32,13 +32,13 @@
         {
             "site": "producto",
             "access": "private",
-            "rol": "admin"
+            "rol": "1"
             
         },
         {
             "site": "empleado",
             "access": "private",
-            "rol": "admin"
+            "rol": "1"
             
         },
         {
@@ -54,14 +54,9 @@
         }
     ],
 
-    "default-sites": [
-        {
-            "site": "dashboard",
-            "rol": "user"
-        },
-        {
-            "site": "admin",
-            "rol": "admin"
+    "default-sites":{
+        "user" : "dashboard",
+        "admin" : "dashboard"
         }
-    ]
+    
 }

@@ -1,5 +1,5 @@
 <?php
-
+require_once 'class/session.php';
 class SessionController extends Controller {
 
     private $userSession;
@@ -19,7 +19,7 @@ class SessionController extends Controller {
         $this->session = new Session();  
         $json = $this->getJSONFileConfig();
         $this->sites = $json['sites'];
-        $this->deffaultSites = $json['deffault-sites'];
+        $this->defaultSites = $json['default-sites'];
         $this->validateSession();
     }
 
@@ -57,7 +57,7 @@ class SessionController extends Controller {
             }
         }
     }
-    
+
 
     function existSession(){
         if(!$this->session->exist()) return false;
@@ -80,16 +80,15 @@ class SessionController extends Controller {
     }
 
     function isPublic(){
-        $currentURL = $this->getCurrentPage();
-        $currentURL = preg_replace("/\?.*/", "", $currentURL); // Eliminar parámetros de la URL
-        for($i = 0; $i < sizeof($this->sites); $i++){
-            if($currentURL == $this->sites[$i]['site'] && $this->sites[$i]['access'] == 'public'){
-                return true;
-            } else {
-                return false;
-            }
-        }
+    $currentURL = $this->getCurrentPage();
+    $currentURL = preg_replace("/\\?.*/", "", $currentURL); // Eliminar parámetros de la URL
+    for($i = 0; $i < sizeof($this->sites); $i++){
+        if($currentURL == $this->sites[$i]['site'] && $this->sites[$i]['access'] == 'public'){
+            return true;
+        } 
     }
+    return false;
+}
 
     function getCurrentPage(){
         $actualLink = trim($_SERVER['REQUEST_URI']);
@@ -118,6 +117,31 @@ class SessionController extends Controller {
         }
         return false;
     }
+
+    ///Fin de los métodos para validar la sesión y si es pública o privada.
+
+    //Metodos para login y logout
+    function initialize($user)  {
+        $this->session->setCurrentUser($user->getId());
+        $this->autorizeAccess($user->getRol());
+    }
+
+
+    function autorizeAccess($rol){
+        switch($rol){
+            case 'user':
+                $this->redirect($this->deffaultSites['user'], []);
+            break;
+            case 'admin':
+                $this->redirect($this->deffaultSites['admin'], []);
+            break;
+        }
+    }
+    function logout(){
+        $this->session->closeSession();
+    }
+
+
 
 
 
