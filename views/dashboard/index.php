@@ -10,7 +10,7 @@
 
 <body>
     <?php require __DIR__ . '/../../layout/header.php'; ?>
-    
+
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -25,11 +25,29 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <form class="d-flex" onsubmit="buscarProducto(); return false;">
-                                <input class="form-control me-2" type="search" placeholder="Buscar producto..." id="busqueda">
+                                <input class="form-control me-2" type="search" placeholder="Buscar producto..."
+                                    id="busqueda">
                                 <button class="btn btn-primary" type="submit">Buscar</button>
                             </form>
                         </div>
                     </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Categoría</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultados">
+                            <!-- Los resultados de la búsqueda se insertarán aquí -->
+                        </tbody>
+                    </table>
                 </div>
                 <script src="/js/search.js"></script>
             </main>

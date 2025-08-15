@@ -1,0 +1,67 @@
+{
+    "sites": [
+        {
+            "site": "",
+            "access": "public",
+            "rol": ""
+            
+        },
+        {
+            "site": "login",
+            "access": "public",
+            "rol": ""
+            
+        },
+        {
+            "site": "dashboard",
+            "access": "private",
+            "rol": "user"
+            
+        },
+        {
+            "site": "main",
+            "access": "public",
+            "rol": ""
+            
+        },
+        {
+            "site": "errores",
+            "access": "public",
+            "rol": ""
+        },
+        {
+            "site": "producto",
+            "access": "private",
+            "rol": "admin"
+            
+        },
+        {
+            "site": "empleado",
+            "access": "private",
+            "rol": "admin"
+            
+        },
+        {
+            "site": "factura",
+            "access": "public",
+            "rol": ""
+            
+        },
+        {
+            "site": "cliente",
+            "access": "public",
+            "rol": ""
+        }
+    ],
+
+    "default-sites": [
+        {
+            "site": "dashboard",
+            "rol": "user"
+        },
+        {
+            "site": "admin",
+            "rol": "admin"
+        }
+    ]
+}

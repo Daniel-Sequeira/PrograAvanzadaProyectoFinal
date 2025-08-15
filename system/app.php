@@ -8,7 +8,7 @@ class App{
         $url = rtrim($url, '/');
         $url = explode('/', $url);
        
-        if(empty($url[0])){
+         if(empty($url[0])){
             // Si no hay controlador, cargamos el controlador por defecto
              $archivoController = 'controllers/main.php';
               require_once $archivoController;
@@ -39,6 +39,6 @@ class App{
             
         }   
 
-    }   
+    }     
 }  
 ?>

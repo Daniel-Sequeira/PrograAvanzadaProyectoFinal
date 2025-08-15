@@ -4,8 +4,11 @@ class Errores extends Controller {
     function __construct(){
         parent::__construct();
        
-        echo "<p>Error: La página que buscas no existe.</p>";
-       
+    }
+
+    function render(){
+        $this->view->mensaje_error = 'Error: La página solicitada no existe.';
+        $this->view->render('errores/index');
     }
 }
 
