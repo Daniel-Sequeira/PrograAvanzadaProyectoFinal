@@ -15,6 +15,7 @@
 <body class="text-center">
 
     <main class="form-signin w-100 m-auto">
+
         <form action="<?php echo constant('URL'); ?>login/authenticate" method="post">
             <img class="mb-4" src="<?php echo constant('URL');?>img/LogoZapateria.png" alt="Logo Zapatería" width="85"
                 height="70">
@@ -41,6 +42,7 @@
             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
             <p class="mt-5 mb-3 text-muted">Zapatería SM &copy; <?= date('Y') ?></p>
         </form>
+        
     </main>
 
 

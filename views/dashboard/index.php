@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Zapatería SM</title>
-    <!-- Asegúrate de incluir Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo constant('URL'); ?>css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <?php require __DIR__ . '/../../layout/header.php'; ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 91ed860 (Merge branch 'main' of https://github.com/Daniel-Sequeira/PrograAvanzadaProyectoFinal)
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="col-md-3 col-12 mb-3">
                 <?php require  __DIR__ . '/../../layout/sidebar.php'?>
+<<<<<<< HEAD
             </nav>
             <!-- Main content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -51,12 +53,34 @@
                 </div>
                 <script src="/js/search.js"></script>
             </main>
+=======
+            </div>
+            <div class="col-md-9 col-12">
+                <!-- Buscador por marca -->
+                <form method="GET" action="">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="marca" placeholder="Buscar por marca"
+                            value="<?php echo isset($_GET['marca']) ? htmlspecialchars($_GET['marca']) : ''; ?>">
+                        <button class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
+                </form>
+                <?php
+                // Ejemplo de filtrado (ajusta según tu lógica y datos)
+                if (isset($_GET['marca']) && $_GET['marca'] !== '') {
+                    $marca = $_GET['marca'];
+                    // Aquí iría la consulta a la base de datos para filtrar por marca
+                    echo "<p>Resultados para la marca: <strong>" . htmlspecialchars($marca) . "</strong></p>";
+                    // Mostrar resultados...
+                }
+                ?>
+            </div>
+>>>>>>> parent of 91ed860 (Merge branch 'main' of https://github.com/Daniel-Sequeira/PrograAvanzadaProyectoFinal)
         </div>
     </div>
 
-    <?php require  __DIR__ . '/../../layout/footer.php'?>
-    <!-- Bootstrap JS (opcional) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div>
+        <?php require  __DIR__ . '/../../layout/footer.php'?>
+    </div>
 </body>
 
 

@@ -21,7 +21,7 @@ class EmpleadoModel extends Model implements IModel {
         $this->contrasena = '';
         $this->estado = 1; // Por defecto activo
         $this->fecha_creacion = date('Y-m-d H:i:s'); // Fecha de creación por defecto
-        $this->id_rol = 0; // Por defecto rol de usuario    
+        $this->id_rol = 2; // Por defecto rol de usuario    
     }
 
     public function save(){
@@ -46,6 +46,7 @@ class EmpleadoModel extends Model implements IModel {
 
         }
     }
+
 
     public function getAll() {
         $items = [];
@@ -97,6 +98,7 @@ class EmpleadoModel extends Model implements IModel {
         }
     }
 
+
     public function update() {
         try{
            $query = $this->prepare('UPDATE empleado SET nombre = :nombre, correo = :correo, telefono = :telefono, cedula = :cedula,
@@ -140,9 +142,10 @@ class EmpleadoModel extends Model implements IModel {
         $this->contrasena     = $array['contrasena'];
         $this->estado         = $array['estado'];
         $this->fecha_creacion = $array['fecha_creacion'];
-        $this->idRol          = $array['id_rol'];
+        $this->id_rol          = $array['id_rol'];
 
     }  
+
 
     public function exists($cedula) {
         try {

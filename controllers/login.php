@@ -23,12 +23,10 @@ class Login extends SessionController {
                 $this->redirect('login', ['error' => 'Los campos no pueden estar vacíos']);
                 return;
             } 
-             $empleado = $this->model->login($cedula, $contrasena);
+             $user = $this->model->login($cedula, $contrasena);
 
-             if($empleado != NULL){
-                $this->initialize($empleado);
-                 header('Location: ' . constant('URL') . 'dashboard');
-            exit;
+             if($user != NULL){
+                $this->initialize($user);
             }else{
                 $this->redirect('login', ['error' => 'La cédula o la contraseña son incorrectas']);
             }

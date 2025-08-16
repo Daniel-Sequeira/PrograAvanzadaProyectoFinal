@@ -1,8 +1,10 @@
 <?php
+
 //Controlador padre
 class Controller{
     //propiedades que almacenan instancias de la vista y el modelo, controladores hijos podrán acceder a ellas.
-    
+    public $view;
+    public $model;
     
 //Constructor de la clase
     function __construct(){      
@@ -59,7 +61,9 @@ class Controller{
         if($params != ''){
             $params = '?' . $params;
         }
-        header('Location: ' . constant('URL') . '/' . $route . $params);
+            $base = rtrim(constant('URL'), '/');
+            $route = ltrim($route, '/');
+            header('Location: ' . $base . '/' . $route . $params);
     }
     
 
